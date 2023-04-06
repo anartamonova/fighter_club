@@ -18,19 +18,27 @@
 # Нет продуктов
 
 
+# def printGroceries(*args):
+#     list = [name for name in args if type(name) == str and len(name) > 0]
+#     print(list)
+#     if len(list) > 0:
+#         n=1
+#         for prod in list:
+#             print(f"{n}). {prod}")
+#             n +=1 
+#     else:
+#         print("Нет продуктов")
+
+# printGroceries('Бананы', [1, 2], ('Python',), 'Яблоки', '', 'Макароны', 5, True, 'Кофе', False)    
+# printGroceries([4], {}, 1, 2, {'Mathlab'}, '')
+
 def printGroceries(*args):
     list = [name for name in args if type(name) == str and len(name) > 0]
-    if len(list) > 0:
-        n=1
-        for prod in list:
-            print(f"{n}). {prod}")
-            n +=1 
-    else:
-        print("Нет продуктов")
+    print('\n'.join([f'{num}). {prod}' for num, prod in enumerate(list, 1)]) if list else 'Нет продуктов')
+
 
 printGroceries('Бананы', [1, 2], ('Python',), 'Яблоки', '', 'Макароны', 5, True, 'Кофе', False)    
 printGroceries([4], {}, 1, 2, {'Mathlab'}, '')
-
 
 
 # Задача 2. Личные данные
@@ -60,7 +68,9 @@ printGroceries([4], {}, 1, 2, {'Mathlab'}, '')
 # Решить задачи с использованием наименьшего количества строк
 
 def personalData(**kwargs):
-    for key, value in sorted(kwargs.items()):
-        print(key + ": " + str(value))
+    [print(f'{key}: {kwargs[key]}') for key in sorted(kwargs.keys())]
+# def personalData(**kwargs):
+#     for key, value in sorted(kwargs.items()): 
+#         print(key + ": " + str(value))
 
-personalData(first_name='Jack', last_name='Smith', age=32, work_experience = '5 years', position='Project manager')
+print(personalData(first_name='Jack', last_name='Smith', age=32, work_experience = '5 years', position='Project manager'))
